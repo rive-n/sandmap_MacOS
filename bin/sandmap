@@ -41,7 +41,7 @@ __script_params=("$@")
 
 # Store the name of the script and directory call.
 readonly _init_name="$(basename "$0")"
-readonly _init_directory="$(dirname "$(readlink -f "$0")")"
+readonly _init_directory="$(dirname "$(greadlink -f "$0")")"
 
 # Set root directory.
 readonly _rel="${_init_directory}/.."

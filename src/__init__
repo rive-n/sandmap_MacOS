@@ -67,9 +67,9 @@ function __main__() {
 
   # We place here used commands at script runtime, as strings to anything
   # unnecessarily run.
-  readonly commands=("basename" "dirname" "stat" "date" "grep" "egrep" "cut" \
-                     "sed" "gzip" "tar" "nmap" "xterm" "proxychains")
 
+  readonly commands=("basename" "dirname" "stat" "date" "grep" "egrep" "cut" \
+                     "sed" "gzip" "tar" "nmap" "/opt/X11/bin/xterm" "proxychains4")
   # If you intend to specify the full path to the command we do it like:
   # readonly exec_gzip="/bin/gzip"
 
@@ -123,7 +123,7 @@ function __main__() {
   local _short_opt=""
   local _long_opt="help"
 
-  _GETOPT_PARAMS=$(getopt -o "${_short_opt}" --long "${_long_opt}" \
+  _GETOPT_PARAMS=$(getopt_gnu -o "${_short_opt}" --long "${_long_opt}" \
                    -n "${_init_name}" -- "${__script_params[@]}")
 
   # With this structure, in the case of problems with the parameters placed

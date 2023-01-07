@@ -1,6 +1,36 @@
 #!/usr/bin/env bash
 
-readonly _dir="$(dirname "$(readlink -f "$0")")"
+# I don't really want to check if binary
+# already exists, so trying to download 
+# in directly with brew;
+# If you want to change it - make pull request
+
+echo "Trying to install gnu-getopt and coreutils (we need GNU tools for sandmap)."
+brew install -q gnu-getopt
+# brew link --force gnu-getopt - not recommended, but you can try.
+brew install -q coreutils
+
+
+gnu_version=$(ls /usr/local/Cellar/gnu-getopt)
+
+if [ $? -ne 0 ] 
+then
+	echo "Seems like brew did not complete the installation. Please, make sure to execute: brew install -q gnu-getopt"
+	exit
+else
+	echo "Using 'ln' to symlink GNU getopt to getopt_gnu (/usr/local/bin/getopt_gnu)"
+	ln "/usr/local/Cellar/gnu-getopt/$gnu_version/bin/getopt" '/usr/local/bin/getopt_gnu'
+fi
+
+coreutils=$(ls /usr/local/opt/coreutils)
+if [ $? -ne 0 ] 
+then
+	echo "Seems like brew did not complete the installation. Please, make sure to execute: brew install -q coreutils"
+	exit
+fi
+
+
+readonly _dir="$(dirname "$(greadlink -f "$0")")"
 
 # shellcheck disable=SC2034
 _arg="$1"

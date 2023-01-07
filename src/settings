@@ -35,5 +35,6 @@ trap "_get_trap_SIG EXIT" EXIT
 trap "_get_trap_SIG SIGS" SIGHUP SIGTERM SIGKILL SIGINT
 
 # Set properly terminal size if you use X-Session.
-_rows=44 ; _cols=180
-if [ ! -z "${DISPLAY:-}" ]; then resize -s "$_rows" "$_cols" > /dev/null ; fi
+# _rows=44 ; _cols=180
+# if [ ! -z "${DISPLAY:-}" ]; then resize -s "$_rows" "$_cols" > /dev/null ; fi
+# This shit does not working on macOS, so fuck it. 
