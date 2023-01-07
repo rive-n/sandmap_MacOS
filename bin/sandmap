@@ -66,6 +66,7 @@ source "${_src}/__init__"
 
 # We pass arguments to the __main__ function.
 # It is required if you want to run on arguments type $1, $2, ...
+
 __main__ "${__script_params[@]}"
 
 _exit_ "0"

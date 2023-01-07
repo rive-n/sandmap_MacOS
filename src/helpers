@@ -471,7 +471,7 @@ function _init_cmd() {
   # shellcheck disable=SC2154
   if [[ "$_tor_connection" == "true" ]] ; then
 
-    _full_command+=("proxychains")
+    _full_command+=("$(which proxychains4)")
 
   fi
 
@@ -489,10 +489,17 @@ function _init_cmd() {
 
   fi
 
+  # IDK why but M1 Macs command `source`
+  # drops all things from PATH
+  
+  export PATH=/opt/homebrew/bin:$PATH
+
+  nmap_location=$(which nmap)
+
   # shellcheck disable=SC2154
   if [[ "${input_array[0]}" == "nmap" ]] ; then
 
-    _full_command+=("nmap" "${_cmd[@]}")
+    _full_command+=("${nmap_location}" "${_cmd[@]}")
 
   else
 
@@ -502,17 +509,17 @@ function _init_cmd() {
 
         if [[ "${#_script_args_full[@]}" -ne 0 ]] ; then
 
-          _full_command+=("nmap" "${_cmd[@]}" "--script-args ${_script_args_full[@]}" "${_destination}")
+          _full_command+=("${nmap_location}" "${_cmd[@]}" "--script-args ${_script_args_full[@]}" "${_destination}")
 
         else
 
-          _full_command+=("nmap" "${_cmd[@]}" "${_destination}")
+          _full_command+=("${nmap_location}" "${_cmd[@]}" "${_destination}")
 
         fi
 
       else
 
-        _full_command+=("nmap" "${_cmd[@]}" "${_destination}")
+        _full_command+=("${nmap_location}" "${_cmd[@]}" "${_destination}")
 
       fi
 
@@ -522,17 +529,17 @@ function _init_cmd() {
 
         if [[ "${#_script_args_full[@]}" -ne 0 ]] ; then
 
-          _full_command+=("nmap" "${_cmd[@]}" "${_parameters}" "--script-args ${_script_args_full[@]}" "${_destination}")
+          _full_command+=("${nmap_location}" "${_cmd[@]}" "${_parameters}" "--script-args ${_script_args_full[@]}" "${_destination}")
 
         else
 
-          _full_command+=("nmap" "${_cmd[@]}" "${_parameters}" "${_destination}")
+          _full_command+=("${nmap_location}" "${_cmd[@]}" "${_parameters}" "${_destination}")
 
         fi
 
       else
 
-        _full_command+=("nmap" "${_cmd[@]}" "${_parameters}" "${_destination}")
+        _full_command+=("${nmap_location}" "${_cmd[@]}" "${_parameters}" "${_destination}")
 
       fi
 

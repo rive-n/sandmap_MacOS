@@ -69,7 +69,7 @@ function __main__() {
   # unnecessarily run.
 
   readonly commands=("basename" "dirname" "stat" "date" "grep" "egrep" "cut" \
-                     "sed" "gzip" "tar" "nmap" "/opt/X11/bin/xterm" "proxychains4")
+                     "sed" "gzip" "tar" "$(which nmap)" "/opt/X11/bin/xterm" "$(which proxychains4)")
   # If you intend to specify the full path to the command we do it like:
   # readonly exec_gzip="/bin/gzip"
 
