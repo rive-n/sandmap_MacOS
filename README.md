@@ -63,16 +63,26 @@ It's simple:
 
 ```bash
 # Clone this repository
-git clone --recursive https://github.com/trimstray/sandmap
+git clone --recursive https://github.com/rive-n/sandmap_MacOS.git
 
 # Go into the repository
-cd sandmap
+cd sandmap_MacOS
 
 # Install
-./setup.sh install
+./setup.sh
+
+# Setup.sh will trigger sudo: `sudo ./setup.sh install`
+# You can do it manually: 
+  brew install -q --overwrite gnu-getopt
+  brew install -q --overwrite coreutils
+  sudo ./setup.sh install
+
 
 # Run the app
-sandmap
+sudo sandmap
+
+# To uninstall use: 
+sudo ./setup.sh uninstall 
 ```
 
 > * symlink to `bin/sandmap` is placed in `/usr/local/bin`
@@ -128,10 +138,9 @@ This tool working with:
 - **GNU/Linux** (testing on Debian and CentOS)
 - **Bash** (testing on 4.4.19)
 - **Nmap** (testing on 7.70)
+- **MacOS** 
 
 Also you will need **root access**.
-
-## Other
 
 ### Modules
 
