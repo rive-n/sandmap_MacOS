@@ -100,9 +100,11 @@ function motd_cli() {
   tput cup 5 $((66 + _t)) ; printf "%s" "|__|"
 
   tput cup 6 $((40 + _t)) ; printf "%s: \\e[3;36m%s\\e[m" "Author" "trimstray"
+  tput cup 6 $((40 + _t)) ; printf "%s: \\e[3;36m%s\\e[m" "Fork by" "@rive_n"
   tput cup 6 $((59 + _t)) ; printf "%s: \\e[3;36m%s\\e[m" "Version" "${__version}"
+  tput cup 6 $((40 + _t)) ; printf "%s: \\e[3;36m%s\\e[m" "Fork for OS" "MacOS"
 
-  tput cup 8 $((26 + _t)) ; printf "%s \\e[1;38m%s\\e[m" "Project:" "https://github.com/trimstray/sandmap"
+  tput cup 8 $((26 + _t)) ; printf "%s \\e[1;38m%s\\e[m" "Project:" "https://github.com/rive-n/sandmap_MacOS"
 
   tput cup 10 $((26 + _t)) ; printf "%s" "This program comes with ABSOLUTELY NO WARRANTY."
   tput cup 11 $((26 + _t)) ; printf "%s" "This is free software, and you are welcome to redistribute it"
