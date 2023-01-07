@@ -69,7 +69,7 @@ git clone --recursive https://github.com/rive-n/sandmap_MacOS.git
 cd sandmap_MacOS
 
 # Install
-./setup.sh
+./startup.sh
 
 # Setup.sh will trigger sudo: `sudo ./setup.sh install`
 # You can do it manually: 
